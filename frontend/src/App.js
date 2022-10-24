@@ -5,6 +5,7 @@ import AddArticle from './Components/AddArticle/AddArticle';
 import Navigator from './Components/Navbar/Navigator';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dashboard from './Components/Dashboard/Dashboard';
+import EditArticle from './Components/EditArticle/EditArticle';
 
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
       <Routes>
         <Route path='/add' element={<AddArticle/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/edit/:id' element={<EditArticle/>}/>
+
 
       </Routes>
     </div>

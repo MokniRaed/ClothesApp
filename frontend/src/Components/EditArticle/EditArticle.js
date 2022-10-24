@@ -1,58 +1,55 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useNavigate } from "react-router-dom";
-import { addArticle } from "../../Api/aticleApi";
 import toast, { Toaster } from "react-hot-toast";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const AddArticle = () => {
-  const navigate = useNavigate();
+const EditArticle = () => {
+  const Articles = useSelector(state =>state.Article)
+  const {id} = useParams();
+  const article = Articles.find(e =>e._id ===id);
+  console.log(article,"article");
+
   const [categorie, setCategorie] = useState("");
   const [type, setType] = useState("");
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
+  
 
-  const handleAdd = (article) => {
-    
-    console.log("clicked", article);
-    toast.promise(addArticle(article), {
-      loading: "Adding...",
-      success: <b>Article Added!</b>,
-      error: <b>Could not Add.</b>,
-    });
-    navigate("/dashboard");
-  };
 
   return (
     <div>
       <Toaster position="top-right" />
-      <h1>Add Article</h1>
+      <h1>Edit Article</h1>
       <Container style={{ margin: "40px" }}>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
-            <Form>  
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Select
-                  onChange={(e) => setCategorie(e.target.value)}
-                  aria-label="Default select example"
+            <Form>
+              <Form.Group   className="mb-3" controlId="formBasicEmail">
+                <Form.Select value={"Femme"}
+                
+                  onChange={(e) => {}}
+                  aria-label="Default select "
                 >
-                  <option>Open this select </option>
-                  <option value="Homme">Homme</option>
-                  <option value="Femme">Femme</option>
+                  <option>Choose Category </option>
+                  <option  value="Homme">Homme</option>
+                  <option  value="Femme">Femme</option>
+              
+                  
                 </Form.Select>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Type</Form.Label>
                 <Form.Control
+                placeholder={article.type}
                   onChange={(e) => setType(e.target.value)}
                   type="text"
-                  placeholder="Robe.."
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -88,13 +85,8 @@ const AddArticle = () => {
                   placeholder="220"
                 />
               </Form.Group>
-              <Button
-                variant="primary"
-                onClick={() =>
-                  handleAdd({ categorie, type, color, price, size, quantity })
-                }
-              >
-                Add
+              <Button variant="primary" onClick={() => {EditArticle(id,{ categorie, type, color, price, size, quantity })}}>
+                Edit
               </Button>
             </Form>
           </Col>
@@ -104,4 +96,4 @@ const AddArticle = () => {
   );
 };
 
-export default AddArticle;
+export default EditArticle;

@@ -9,7 +9,7 @@ const Navigator = () => {
     <div>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Clothes-Store</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/Dashboard">Clothes-Store</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/Dashboard">
               Dashboard
@@ -18,6 +18,12 @@ const Navigator = () => {
             <Nav.Link as={Link} to="/add">
               Add Article
             </Nav.Link>
+            
+            <Nav.Link as={Link} to="/edit">
+              Edit Article
+            </Nav.Link>
+            
+            
           </Nav>
         </Container>
       </Navbar>
