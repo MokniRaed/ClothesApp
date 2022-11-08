@@ -1,4 +1,5 @@
 //modules importations
+require("dotenv").config();
 const express = require("express");
 const appRouter = require("./Route/appRoute");
 const conn = require("./Config/conn")

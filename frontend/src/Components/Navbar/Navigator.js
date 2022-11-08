@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 
 const Navigator = () => {
+  
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -19,12 +20,13 @@ const Navigator = () => {
               Add Article
             </Nav.Link>
             
-            <Nav.Link as={Link} to="/edit">
-              Edit Article
-            </Nav.Link>
-            
-            
+          
           </Nav>
+          <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+            Signed in as: <a href="#login">Mark Otto</a>
+          </Navbar.Text>
+        </Navbar.Collapse>
         </Container>
       </Navbar>
     </div>

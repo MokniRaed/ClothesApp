@@ -6,6 +6,7 @@ import { setArticles } from "../../store/ArticeSlice";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
+
 const ArticleTable = () => {
   //Call hooks
   const dispatch = useDispatch();
@@ -54,8 +55,8 @@ const ArticleTable = () => {
           </tr>
         </thead>
         <tbody>
-          {Articles.map((article) => (
-            <tr>
+          {Articles.map((article,key) => (
+            <tr key={key}>
               <td>{count++}</td>
               <td>{article.categorie}</td>
               <td>{article.type}</td>
