@@ -46,7 +46,7 @@ exports.login = async (req, res) => {
     console.log("private key ",process.env.privatekey);
     const token = jwt.sign(payload,process.env.privatekey)
     
-    res.status(200).send({msg:"token",token});
+    res.status(200).send({msg:"token",token,isUser});
   }catch (err) {
     console.log(err);
   }

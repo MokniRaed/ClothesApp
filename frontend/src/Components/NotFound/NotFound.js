@@ -1,6 +1,6 @@
 import React from "react";
 
-const Error = () => {
+const NotFound = () => {
   const winX = window.innerWidth + "px";
   const winY = window.innerHeight + "px";
   return (
@@ -9,11 +9,11 @@ const Error = () => {
         width={winX}
         height={winY}
         style={{ alignSelf: "center" }}
-        src="https://helpdeskgeek.com/wp-content/pictures/2020/06/no-internet.png"
+        src="https://img.freepik.com/free-vector/internet-network-warning-404-error-page-file-found-web-page_1150-48326.jpg?w=2000"
         alt="404"
       />
     </div>
   );
 };
 
-export default Error;
+export default NotFound;

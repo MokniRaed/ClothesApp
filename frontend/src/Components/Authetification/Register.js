@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { Navigate, useNavigate } from "react-router-dom";
 import { createUser } from "../../Api/aticleApi";
 import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -39,6 +42,9 @@ const Register = () => {
   return (
     <div style={{ margin: "40px" }}>
       <Toaster position="top-right" />
+      <Container className="align-m">
+        <Row className="justify-content-md-center">
+        <Col md={{ span: 6 }}>
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Name </Form.Label>
@@ -81,6 +87,9 @@ const Register = () => {
           Create Account
         </Button>
       </Form>
+      </Col>
+      </Row>
+      </Container>
     </div>
   );
 };

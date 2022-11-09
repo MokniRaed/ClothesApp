@@ -10,6 +10,8 @@ import Login from "./Components/Authetification/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "rsuite/dist/rsuite.min.css";
 import Error from "./Components/NoInternet/Error";
+import NotFound from "./Components/NotFound/NotFound";
+import { useState } from "react";
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
         <Route path="/createaccount" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/error" element={<Error />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
