@@ -1,11 +1,14 @@
 import axios from "axios";
 
+// Set config defaults when creating the instance
+
+const clothes = axios.create({
+  baseURL: "http://localhost:5000/clothes/",
+});
+
 export const addArticle = async (article) => {
   try {
-    const added = await axios.post(
-      "http://localhost:5000/clothes/newarticle",
-      article
-    );
+    const added = await axios.post("/newarticle", article);
     return added;
   } catch (err) {
     console.log(err);
@@ -14,21 +17,17 @@ export const addArticle = async (article) => {
 
 export const getAticles = async () => {
   try {
-    const { data } = await axios.get("http://localhost:5000/clothes/getAll");
+    const { data } = await clothes.get("/getAll");
     return data;
   } catch (err) {
-    if(err.message === "Network Error"){
-      window.location.href = '/error';
-
+    if (err.message === "Network Error") {
+      window.location.href = "/error";
     }
   }
 };
 export const editAticles = async (id, obj) => {
   try {
-    const edited = await axios.put(
-      `http://localhost:5000/clothes/editarticle/${id}`,
-      obj
-    );
+    const edited = await clothes.put(`/editarticle/${id}`, obj);
     return edited;
   } catch (err) {
     console.log(err);
@@ -36,9 +35,7 @@ export const editAticles = async (id, obj) => {
 };
 export const deleteAticles = async (id) => {
   try {
-    const deleted = await axios.delete(
-      `http://localhost:5000/clothes/deletearticle/${id}`
-    );
+    const deleted = await clothes.delete(`/deletearticle/${id}`);
     return deleted;
   } catch (err) {
     console.log(err);
@@ -47,10 +44,7 @@ export const deleteAticles = async (id) => {
 
 export const createUser = async (newUser) => {
   try {
-    const user = await axios.post(
-      "http://localhost:5000/clothes/createuser",
-      newUser
-    );
+    const user = await clothes.post("/createuser", newUser);
     return user;
   } catch (err) {
     console.log(err);
@@ -59,10 +53,7 @@ export const createUser = async (newUser) => {
 
 export const login = async (user) => {
   try {
-    const response = await axios.post(
-      "http://localhost:5000/clothes/login",
-      user
-    );
+    const response = await clothes.post("/login", user);
     return response;
   } catch (err) {
     console.log(err);
