@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const articleSlice = createSlice({
   name: "Article",
-  initialState: [{
+  initialState:[{
     category: "none",
     price: "none",
     size: "none",

@@ -8,6 +8,8 @@ import EditArticle from "./Components/EditArticle/EditArticle";
 import Register from "./Components/Authetification/Register";
 import Login from "./Components/Authetification/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "rsuite/dist/rsuite.min.css"
+import Error from "./Components/NoInternet/Error";
 
 
 
@@ -21,6 +23,7 @@ function App() {
         <Route path="/edit/:id" element={<EditArticle />} />
         <Route path="/createaccount" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/error" element={<Error />} />
       </Routes>
     </div>
   );
