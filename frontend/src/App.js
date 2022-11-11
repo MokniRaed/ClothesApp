@@ -12,17 +12,40 @@ import "rsuite/dist/rsuite.min.css";
 import Error from "./Components/NoInternet/Error";
 import NotFound from "./Components/NotFound/NotFound";
 import { useState } from "react";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
 function App() {
+  const token = localStorage.getItem("token");
   return (
     <div className="App">
       <Navigator />
       <Routes>
         {/* Redirect the path to dashboard component */}
         <Route path="/" element={<Navigate to="/dashboard" />} />
-        <Route path="/add" element={<AddArticle />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/edit/:id" element={<EditArticle />} />
+        <Route
+          path="/add"
+          element={
+            <PrivateRoute>
+              <AddArticle />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/edit/:id"
+          element={
+            <PrivateRoute>
+              <EditArticle />
+            </PrivateRoute>
+          }
+        />
         <Route path="/createaccount" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/error" element={<Error />} />

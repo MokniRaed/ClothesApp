@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from 'react-bootstrap/Container';
@@ -35,6 +35,8 @@ const Login = () => {
     //Navigate to the dashboard
     navigate("/dashboard");
   };
+
+  
   return (
     <div>
       <Toaster position="top-right" />

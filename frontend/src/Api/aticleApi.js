@@ -10,7 +10,7 @@ export const addArticle = async (article) => {
   try {
     const added = await axios.post("/newarticle", article);
     return added;
-  } catch (err) {
+  } catch (err) {   
     console.log(err);
   }
 };

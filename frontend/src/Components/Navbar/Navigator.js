@@ -2,6 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
@@ -9,9 +10,11 @@ import { useSelector } from "react-redux";
 const Navigator = () => {
   const navigate = useNavigate();
   //get user details from the store
-  const user = useSelector(state =>state.User)
+  const user = useSelector((state) => state.User);
   const session = localStorage.getItem("token");
+  console.log(user.name,"usernames");
 
+  // logout function
   const handleLogout = () => {
     //remove the token
     localStorage.removeItem("token");
@@ -36,12 +39,17 @@ const Navigator = () => {
               </Nav.Link>
             </Nav>
             <Navbar.Collapse className="justify-content-end">
-              <Navbar.Text>
-                Signed in as:{" "}
-                <Button variant="primary" onClick={() => handleLogout()}>
-                  {user.name }
-                </Button>
-              </Navbar.Text>
+              <Navbar.Text>Signed in as:</Navbar.Text>
+              <NavDropdown
+                id="nav-dropdown-dark-example"
+                title={user.name}
+                
+              >
+                {" "}
+                <NavDropdown.Item onClick={() => handleLogout()}>
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
             </Navbar.Collapse>
           </Container>
         ) : (
